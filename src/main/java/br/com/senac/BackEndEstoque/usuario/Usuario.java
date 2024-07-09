@@ -3,12 +3,17 @@ package br.com.senac.BackEndEstoque.usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity(name = "usuario")
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@Entity(name = "usuario")
 public class Usuario {
 
     @Id
@@ -44,23 +49,23 @@ public class Usuario {
     @NotNull(message = "O campo login não pode ser nulo.")
     @Size(
             max = 20,
-            message = "O campo login não pode ter mais que 100 caracteres."
+            message = "O campo login não pode ter mais que 20 caracteres."
     )
     @Size(
-            min = 15,
-            message = "O campo nome não pode ter menos que 3 caracteres."
+            min = 5,
+            message = "O campo login não pode ter menos que 5 caracteres."
     )
     private String login;
 
     @Column(name = "senha")
     @NotNull(message = "O campo senha não pode ser nulo.")
     @Size(
-            max = 30,
-            message = "O campo nome não pode ter mais que 100 caracteres."
+            max = 10,
+            message = "O campo senha não pode ter mais que 10 caracteres."
     )
     @Size(
-            min = 15,
-            message = "O campo nome não pode ter menos que 3 caracteres."
+            min = 6,
+            message = "O campo senha não pode ter menos que 6 caracteres."
     )
     private String senha;
 }

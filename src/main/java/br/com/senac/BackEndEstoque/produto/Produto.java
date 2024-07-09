@@ -3,12 +3,13 @@ package br.com.senac.BackEndEstoque.produto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Entity(name = "produto")
-@Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity(name = "produto")
 public class Produto {
 
     @Id
@@ -43,9 +44,9 @@ public class Produto {
     @Column(name = "ean")
     @NotNull(message = "O campo EAN não pode ser nulo.")
     @Size(
-            max = 20,
-            min = 20,
-            message = "O campo EAN deve ter 20 caracteres."
+            max = 13,
+            min = 13,
+            message = "O campo EAN deve ter 13 caracteres."
     )
     private String EAN;
 
@@ -55,5 +56,8 @@ public class Produto {
 
     @Column(name = "valor")
     @NotNull(message = "O campo valor não pode ser nulo.")
-    private double valor;
+    private Double valor;
+
+    @Column(name = "ativo")
+    private Boolean ativo;
 }
